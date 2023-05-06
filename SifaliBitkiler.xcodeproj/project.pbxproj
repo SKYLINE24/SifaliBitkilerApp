@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D7D990B29C379A800D78A34 /* BitkilerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D990A29C379A800D78A34 /* BitkilerVC.swift */; };
+		2D7D990D29C37DCD00D78A34 /* BitkilerDetayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D990C29C37DCD00D78A34 /* BitkilerDetayVC.swift */; };
+		2D7D990F29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D990E29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift */; };
+		2D7D991129C37E6700D78A34 /* FarkindalikVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D991029C37E6700D78A34 /* FarkindalikVC.swift */; };
+		2D7D991329C37E8900D78A34 /* OneriVeKatkiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D991229C37E8900D78A34 /* OneriVeKatkiVC.swift */; };
+		2D8856BF2A05D08A0053229D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D8856BE2A05D08A0053229D /* GoogleService-Info.plist */; };
 		2DE3E22629C1F672004137C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE3E22529C1F672004137C2 /* AppDelegate.swift */; };
 		2DE3E22829C1F672004137C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE3E22729C1F672004137C2 /* SceneDelegate.swift */; };
 		2DE3E22A29C1F672004137C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE3E22929C1F672004137C2 /* ViewController.swift */; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D7D990A29C379A800D78A34 /* BitkilerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitkilerVC.swift; sourceTree = "<group>"; };
+		2D7D990C29C37DCD00D78A34 /* BitkilerDetayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitkilerDetayVC.swift; sourceTree = "<group>"; };
+		2D7D990E29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NelerdenKorunmaliyizVC.swift; sourceTree = "<group>"; };
+		2D7D991029C37E6700D78A34 /* FarkindalikVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarkindalikVC.swift; sourceTree = "<group>"; };
+		2D7D991229C37E8900D78A34 /* OneriVeKatkiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneriVeKatkiVC.swift; sourceTree = "<group>"; };
+		2D8856BE2A05D08A0053229D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2DE3E22229C1F672004137C2 /* SifaliBitkiler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SifaliBitkiler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE3E22529C1F672004137C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DE3E22729C1F672004137C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,15 +68,45 @@
 		2DE3E22429C1F672004137C2 /* SifaliBitkiler */ = {
 			isa = PBXGroup;
 			children = (
-				2DE3E22529C1F672004137C2 /* AppDelegate.swift */,
-				2DE3E22729C1F672004137C2 /* SceneDelegate.swift */,
-				2DE3E22929C1F672004137C2 /* ViewController.swift */,
+				2DE3E23B29C1F970004137C2 /* Model View */,
+				2DE3E23A29C1F969004137C2 /* Model */,
+				2DE3E23929C1F95D004137C2 /* View */,
 				2DE3E22B29C1F672004137C2 /* Main.storyboard */,
 				2DE3E22E29C1F673004137C2 /* Assets.xcassets */,
 				2DE3E23029C1F673004137C2 /* LaunchScreen.storyboard */,
 				2DE3E23329C1F673004137C2 /* Info.plist */,
+				2D8856BE2A05D08A0053229D /* GoogleService-Info.plist */,
 			);
 			path = SifaliBitkiler;
+			sourceTree = "<group>";
+		};
+		2DE3E23929C1F95D004137C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2DE3E22529C1F672004137C2 /* AppDelegate.swift */,
+				2DE3E22729C1F672004137C2 /* SceneDelegate.swift */,
+				2DE3E22929C1F672004137C2 /* ViewController.swift */,
+				2D7D990A29C379A800D78A34 /* BitkilerVC.swift */,
+				2D7D990C29C37DCD00D78A34 /* BitkilerDetayVC.swift */,
+				2D7D990E29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift */,
+				2D7D991029C37E6700D78A34 /* FarkindalikVC.swift */,
+				2D7D991229C37E8900D78A34 /* OneriVeKatkiVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2DE3E23A29C1F969004137C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2DE3E23B29C1F970004137C2 /* Model View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DE3E23229C1F673004137C2 /* LaunchScreen.storyboard in Resources */,
+				2D8856BF2A05D08A0053229D /* GoogleService-Info.plist in Resources */,
 				2DE3E22F29C1F673004137C2 /* Assets.xcassets in Resources */,
 				2DE3E22D29C1F672004137C2 /* Main.storyboard in Resources */,
 			);
@@ -138,8 +181,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D7D990D29C37DCD00D78A34 /* BitkilerDetayVC.swift in Sources */,
+				2D7D990F29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift in Sources */,
+				2D7D991129C37E6700D78A34 /* FarkindalikVC.swift in Sources */,
 				2DE3E22A29C1F672004137C2 /* ViewController.swift in Sources */,
+				2D7D991329C37E8900D78A34 /* OneriVeKatkiVC.swift in Sources */,
 				2DE3E22629C1F672004137C2 /* AppDelegate.swift in Sources */,
+				2D7D990B29C379A800D78A34 /* BitkilerVC.swift in Sources */,
 				2DE3E22829C1F672004137C2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
