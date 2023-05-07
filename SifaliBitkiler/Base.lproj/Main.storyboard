@@ -159,16 +159,32 @@
             </objects>
             <point key="canvasLocation" x="-596.18320610687022" y="755.63380281690149"/>
         </scene>
-        <!--Öneri ve Katkılar -->
+        <!--Öneri ve Ayarlar-->
         <scene sceneID="MAc-vJ-8pH">
             <objects>
-                <viewController id="tPa-aM-nFb" customClass="OneriVeKatkiVC" customModule="SifaliBitkiler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tPa-aM-nFb" customClass="OneriVeAyalarVC" customModule="SifaliBitkiler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R4g-De-W0O">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqB-jj-YNa">
+                                <rect key="frame" x="249" y="89" width="130" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Hesapdan Çık"/>
+                                <connections>
+                                    <action selector="CikisYapTiklandi:" destination="tPa-aM-nFb" eventType="touchUpInside" id="azf-7d-L9Z"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="toGirisEkrani" modalPresentationStyle="fullScreen" id="6Bj-mg-kee"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8w-gh-ofd">
+                                <rect key="frame" x="144" y="512" width="81" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Gönder"/>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Öneri ve şikayet:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JdM-bk-Bgt">
-                                <rect key="frame" x="16" y="152" width="361" height="34"/>
+                                <rect key="frame" x="16" y="328" width="361" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -177,7 +193,7 @@
                         <viewLayoutGuide key="safeArea" id="7wf-lh-tHH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Öneri ve Katkılar " selectedImage="paperplane.circle.fill" catalog="system" id="2YK-ks-Dh0"/>
+                    <tabBarItem key="tabBarItem" title="Öneri ve Ayarlar" selectedImage="paperplane.circle.fill" catalog="system" id="2YK-ks-Dh0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qrh-dv-a25" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

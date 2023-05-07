@@ -26,7 +26,7 @@ class ViewController: UIViewController {
                 if error != nil{
                     self.hataMesaji(titleInput: "Hata!", messageInput: error?.localizedDescription ?? "Hata aldınız. Tekrar deneyiniz")
                 }else{
-                    self.performSegue(withIdentifier: "toPostVC", sender: nil)
+                    self.performSegue(withIdentifier: "toTabBar", sender: nil)
                 }
             }
         }
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
                             self.sifreTextField.text = ""
                         }
                     }
-                    self.performSegue(withIdentifier: "toPostVC", sender: nil)
+                    self.performSegue(withIdentifier: "toTabBar", sender: nil)
                 }
                 
             }
