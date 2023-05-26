@@ -9,14 +9,20 @@
 /* Begin PBXBuildFile section */
 		2D7D990B29C379A800D78A34 /* BitkilerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D990A29C379A800D78A34 /* BitkilerVC.swift */; };
 		2D7D990D29C37DCD00D78A34 /* BitkilerDetayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D990C29C37DCD00D78A34 /* BitkilerDetayVC.swift */; };
-		2D7D990F29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D990E29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift */; };
-		2D7D991129C37E6700D78A34 /* FarkindalikVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D991029C37E6700D78A34 /* FarkindalikVC.swift */; };
+		2D7D990F29C37E3300D78A34 /* BitkiAramaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D990E29C37E3300D78A34 /* BitkiAramaVC.swift */; };
+		2D7D991129C37E6700D78A34 /* FavorilerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D991029C37E6700D78A34 /* FavorilerVC.swift */; };
 		2D7D991329C37E8900D78A34 /* OneriVeAyalarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D991229C37E8900D78A34 /* OneriVeAyalarVC.swift */; };
+		2D7F64D02A0C0CC600FBA082 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7F64CF2A0C0CC600FBA082 /* SDWebImage */; };
+		2D7F64D22A0C0CC600FBA082 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7F64D12A0C0CC600FBA082 /* SDWebImageMapKit */; };
+		2D7F64D42A11122900FBA082 /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F64D32A11122900FBA082 /* Class.swift */; };
+		2D7F64D62A1A278400FBA082 /* FavoriBitkilerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F64D52A1A278400FBA082 /* FavoriBitkilerCell.swift */; };
 		2D8856BF2A05D08A0053229D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D8856BE2A05D08A0053229D /* GoogleService-Info.plist */; };
 		2D8856C22A05D4A20053229D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8856C12A05D4A20053229D /* FirebaseAuth */; };
 		2D8856C42A05D4A20053229D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8856C32A05D4A20053229D /* FirebaseDatabase */; };
 		2D8856C62A05D4A20053229D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8856C52A05D4A20053229D /* FirebaseFirestore */; };
 		2D8856C82A05D4A20053229D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8856C72A05D4A20053229D /* FirebaseStorage */; };
+		2D8856CA2A0948990053229D /* BitkilerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8856C92A0948990053229D /* BitkilerCell.swift */; };
+		2D8856CC2A09546F0053229D /* BitkiEklemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8856CB2A09546F0053229D /* BitkiEklemeVC.swift */; };
 		2DE3E22629C1F672004137C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE3E22529C1F672004137C2 /* AppDelegate.swift */; };
 		2DE3E22829C1F672004137C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE3E22729C1F672004137C2 /* SceneDelegate.swift */; };
 		2DE3E22A29C1F672004137C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE3E22929C1F672004137C2 /* ViewController.swift */; };
@@ -28,10 +34,14 @@
 /* Begin PBXFileReference section */
 		2D7D990A29C379A800D78A34 /* BitkilerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitkilerVC.swift; sourceTree = "<group>"; };
 		2D7D990C29C37DCD00D78A34 /* BitkilerDetayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitkilerDetayVC.swift; sourceTree = "<group>"; };
-		2D7D990E29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NelerdenKorunmaliyizVC.swift; sourceTree = "<group>"; };
-		2D7D991029C37E6700D78A34 /* FarkindalikVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarkindalikVC.swift; sourceTree = "<group>"; };
+		2D7D990E29C37E3300D78A34 /* BitkiAramaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitkiAramaVC.swift; sourceTree = "<group>"; };
+		2D7D991029C37E6700D78A34 /* FavorilerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorilerVC.swift; sourceTree = "<group>"; };
 		2D7D991229C37E8900D78A34 /* OneriVeAyalarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneriVeAyalarVC.swift; sourceTree = "<group>"; };
+		2D7F64D32A11122900FBA082 /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
+		2D7F64D52A1A278400FBA082 /* FavoriBitkilerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriBitkilerCell.swift; sourceTree = "<group>"; };
 		2D8856BE2A05D08A0053229D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2D8856C92A0948990053229D /* BitkilerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitkilerCell.swift; sourceTree = "<group>"; };
+		2D8856CB2A09546F0053229D /* BitkiEklemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitkiEklemeVC.swift; sourceTree = "<group>"; };
 		2DE3E22229C1F672004137C2 /* SifaliBitkiler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SifaliBitkiler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE3E22529C1F672004137C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DE3E22729C1F672004137C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +61,8 @@
 				2D8856C82A05D4A20053229D /* FirebaseStorage in Frameworks */,
 				2D8856C22A05D4A20053229D /* FirebaseAuth in Frameworks */,
 				2D8856C62A05D4A20053229D /* FirebaseFirestore in Frameworks */,
+				2D7F64D22A0C0CC600FBA082 /* SDWebImageMapKit in Frameworks */,
+				2D7F64D02A0C0CC600FBA082 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,10 +107,14 @@
 				2DE3E22729C1F672004137C2 /* SceneDelegate.swift */,
 				2DE3E22929C1F672004137C2 /* ViewController.swift */,
 				2D7D990A29C379A800D78A34 /* BitkilerVC.swift */,
+				2D8856C92A0948990053229D /* BitkilerCell.swift */,
+				2D8856CB2A09546F0053229D /* BitkiEklemeVC.swift */,
 				2D7D990C29C37DCD00D78A34 /* BitkilerDetayVC.swift */,
-				2D7D990E29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift */,
-				2D7D991029C37E6700D78A34 /* FarkindalikVC.swift */,
+				2D7D990E29C37E3300D78A34 /* BitkiAramaVC.swift */,
+				2D7D991029C37E6700D78A34 /* FavorilerVC.swift */,
+				2D7F64D52A1A278400FBA082 /* FavoriBitkilerCell.swift */,
 				2D7D991229C37E8900D78A34 /* OneriVeAyalarVC.swift */,
+				2D7F64D32A11122900FBA082 /* Class.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -138,6 +154,8 @@
 				2D8856C32A05D4A20053229D /* FirebaseDatabase */,
 				2D8856C52A05D4A20053229D /* FirebaseFirestore */,
 				2D8856C72A05D4A20053229D /* FirebaseStorage */,
+				2D7F64CF2A0C0CC600FBA082 /* SDWebImage */,
+				2D7F64D12A0C0CC600FBA082 /* SDWebImageMapKit */,
 			);
 			productName = SifaliBitkiler;
 			productReference = 2DE3E22229C1F672004137C2 /* SifaliBitkiler.app */;
@@ -169,6 +187,7 @@
 			mainGroup = 2DE3E21929C1F672004137C2;
 			packageReferences = (
 				2D8856C02A05D4A20053229D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2D7F64CE2A0C0CC600FBA082 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 2DE3E22329C1F672004137C2 /* Products */;
 			projectDirPath = "";
@@ -199,13 +218,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D7D990D29C37DCD00D78A34 /* BitkilerDetayVC.swift in Sources */,
-				2D7D990F29C37E3300D78A34 /* NelerdenKorunmaliyizVC.swift in Sources */,
-				2D7D991129C37E6700D78A34 /* FarkindalikVC.swift in Sources */,
+				2D7F64D42A11122900FBA082 /* Class.swift in Sources */,
+				2D7D990F29C37E3300D78A34 /* BitkiAramaVC.swift in Sources */,
+				2D7D991129C37E6700D78A34 /* FavorilerVC.swift in Sources */,
+				2D7F64D62A1A278400FBA082 /* FavoriBitkilerCell.swift in Sources */,
 				2DE3E22A29C1F672004137C2 /* ViewController.swift in Sources */,
+				2D8856CA2A0948990053229D /* BitkilerCell.swift in Sources */,
 				2D7D991329C37E8900D78A34 /* OneriVeAyalarVC.swift in Sources */,
 				2DE3E22629C1F672004137C2 /* AppDelegate.swift in Sources */,
 				2D7D990B29C379A800D78A34 /* BitkilerVC.swift in Sources */,
 				2DE3E22829C1F672004137C2 /* SceneDelegate.swift in Sources */,
+				2D8856CC2A09546F0053229D /* BitkiEklemeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +448,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2D7F64CE2A0C0CC600FBA082 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		2D8856C02A05D4A20053229D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -436,6 +467,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2D7F64CF2A0C0CC600FBA082 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D7F64CE2A0C0CC600FBA082 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		2D7F64D12A0C0CC600FBA082 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D7F64CE2A0C0CC600FBA082 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
 		2D8856C12A05D4A20053229D /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2D8856C02A05D4A20053229D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

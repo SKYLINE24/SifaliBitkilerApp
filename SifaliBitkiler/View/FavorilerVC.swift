@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FarkindalikVC: UIViewController {
+class FavorilerVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

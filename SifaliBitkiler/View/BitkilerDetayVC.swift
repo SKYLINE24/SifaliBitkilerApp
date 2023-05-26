@@ -6,16 +6,36 @@
 //
 
 import UIKit
+import SDWebImage
 
-class BitkilerDetayVC: UIViewController {
 
+class BitkilerDetayVC: UIViewController{
+
+    @IBOutlet weak var bitkiBaslikLabel: UILabel!
+    @IBOutlet weak var bitkiAciklamaLabel: UILabel!
+    @IBOutlet weak var bitkiImageView: UIImageView!
+    @IBOutlet weak var bitkiTarifLabel: UILabel!
+    
+    var secilenBitkiBaslik = ""
+    var secilenBitkiAciklamasi = ""
+    var secilenBitkiImage = ""
+    var secilenBitkiKullanimi = ""
+    
     override func viewDidLoad() {
+        bitkiBaslikLabel.text = secilenBitkiBaslik
+        bitkiAciklamaLabel.text = secilenBitkiAciklamasi
+        if let imageUrl = URL(string: secilenBitkiImage) {
+            bitkiImageView.sd_setImage(with: imageUrl, completed: nil)
+        }
+        bitkiTarifLabel.text = secilenBitkiKullanimi
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
+    
+    
+    @IBAction func bitkiDüzenleTiklandi(_ sender: Any) {
+        
+    }
     
 
 }
