@@ -16,6 +16,7 @@
 		2D7F64D22A0C0CC600FBA082 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7F64D12A0C0CC600FBA082 /* SDWebImageMapKit */; };
 		2D7F64D42A11122900FBA082 /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F64D32A11122900FBA082 /* Class.swift */; };
 		2D7F64D62A1A278400FBA082 /* FavoriBitkilerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F64D52A1A278400FBA082 /* FavoriBitkilerCell.swift */; };
+		2D8682582A220DCA001EA251 /* AramaListelemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8682572A220DCA001EA251 /* AramaListelemeCell.swift */; };
 		2D8856BF2A05D08A0053229D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D8856BE2A05D08A0053229D /* GoogleService-Info.plist */; };
 		2D8856C22A05D4A20053229D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8856C12A05D4A20053229D /* FirebaseAuth */; };
 		2D8856C42A05D4A20053229D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8856C32A05D4A20053229D /* FirebaseDatabase */; };
@@ -39,6 +40,7 @@
 		2D7D991229C37E8900D78A34 /* OneriVeAyalarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneriVeAyalarVC.swift; sourceTree = "<group>"; };
 		2D7F64D32A11122900FBA082 /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		2D7F64D52A1A278400FBA082 /* FavoriBitkilerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriBitkilerCell.swift; sourceTree = "<group>"; };
+		2D8682572A220DCA001EA251 /* AramaListelemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AramaListelemeCell.swift; sourceTree = "<group>"; };
 		2D8856BE2A05D08A0053229D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D8856C92A0948990053229D /* BitkilerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitkilerCell.swift; sourceTree = "<group>"; };
 		2D8856CB2A09546F0053229D /* BitkiEklemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitkiEklemeVC.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				2D8856CB2A09546F0053229D /* BitkiEklemeVC.swift */,
 				2D7D990C29C37DCD00D78A34 /* BitkilerDetayVC.swift */,
 				2D7D990E29C37E3300D78A34 /* BitkiAramaVC.swift */,
+				2D8682572A220DCA001EA251 /* AramaListelemeCell.swift */,
 				2D7D991029C37E6700D78A34 /* FavorilerVC.swift */,
 				2D7F64D52A1A278400FBA082 /* FavoriBitkilerCell.swift */,
 				2D7D991229C37E8900D78A34 /* OneriVeAyalarVC.swift */,
@@ -221,6 +224,7 @@
 				2D7F64D42A11122900FBA082 /* Class.swift in Sources */,
 				2D7D990F29C37E3300D78A34 /* BitkiAramaVC.swift in Sources */,
 				2D7D991129C37E6700D78A34 /* FavorilerVC.swift in Sources */,
+				2D8682582A220DCA001EA251 /* AramaListelemeCell.swift in Sources */,
 				2D7F64D62A1A278400FBA082 /* FavoriBitkilerCell.swift in Sources */,
 				2DE3E22A29C1F672004137C2 /* ViewController.swift in Sources */,
 				2D8856CA2A0948990053229D /* BitkilerCell.swift in Sources */,

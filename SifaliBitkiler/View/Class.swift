@@ -11,7 +11,14 @@ struct Bitki{
     var bitkiAdi: String
     var gorselUrl: String
     var bitkiAciklama: String
-    var bitkiKullanimi: String
+    var bitkiKullanim: String
+    var bitkiDocumentID: String
+}
+
+struct FavoriBitki{
+    var bitkiDocumentID: String
+    var bitkiAdi: String
+    var bitkiGorselURL: String
 }
 
 

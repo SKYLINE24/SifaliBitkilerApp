@@ -1,17 +1,17 @@
 //
-//  FavoriBitkilerCell.swift
+//  AramaListelemeCell.swift
 //  SifaliBitkiler
 //
-//  Created by Erbil Can on 21.05.2023.
+//  Created by Erbil Can on 27.05.2023.
 //
 
 import UIKit
 
-class FavoriBitkilerCell: UITableViewCell {
+class AramaListelemeCell: UITableViewCell {
 
-    @IBOutlet weak var bitkiImageView: UIImageView!
-    @IBOutlet weak var bitkiAdiLabel: UILabel!
     
+    @IBOutlet weak var bitkiImageView: UIImageView!
+    @IBOutlet weak var bitkiIsimLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

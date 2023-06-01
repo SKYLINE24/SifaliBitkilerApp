@@ -16,6 +16,7 @@ class BitkilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
     var secilenBitkiAciklama = ""
     var secilenBitkiImage = ""
     var secilenbitkiKullanim = ""
+    var secilenBitkiDocumentID = ""
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoImageView: UIImageView!
@@ -49,7 +50,8 @@ class BitkilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
                             if let bitkiAdi = document.get("baslik") as? String{
                                 if let bitkiAciklama = document.get("bitkiAciklama") as? String{
                                     if let bitkiKullanim = document.get("bitkiKullanim") as? String{
-                                        let bitki = Bitki(bitkiAdi: bitkiAdi, gorselUrl: gorselUrl, bitkiAciklama: bitkiAciklama, bitkiKullanimi: bitkiKullanim)
+                                        let bitkiDocumentID = document.documentID
+                                        let bitki = Bitki(bitkiAdi: bitkiAdi, gorselUrl: gorselUrl, bitkiAciklama: bitkiAciklama, bitkiKullanim: bitkiKullanim, bitkiDocumentID: bitkiDocumentID)
                                         self.bitkilerDizisi.append(bitki)
                                     }
                                 }
@@ -77,7 +79,8 @@ class BitkilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
         secilenBitkiBaslik = bitkilerDizisi[indexPath.row].bitkiAdi
         secilenBitkiAciklama = bitkilerDizisi[indexPath.row].bitkiAciklama
         secilenBitkiImage = bitkilerDizisi[indexPath.row].gorselUrl
-        secilenbitkiKullanim = bitkilerDizisi[indexPath.row].bitkiKullanimi
+        secilenbitkiKullanim = bitkilerDizisi[indexPath.row].bitkiKullanim
+        secilenBitkiDocumentID = bitkilerDizisi[indexPath.row].bitkiDocumentID
         performSegue(withIdentifier: "toBitkilerDetayVC", sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,6 +90,7 @@ class BitkilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
             destinationVC.secilenBitkiAciklamasi = secilenBitkiAciklama
             destinationVC.secilenBitkiImage = secilenBitkiImage
             destinationVC.secilenBitkiKullanimi = secilenbitkiKullanim
+            destinationVC.secilenBitkiDocumentID = secilenBitkiDocumentID
         }
     }
     
