@@ -41,7 +41,7 @@ class ViewController: UIViewController {
                 }
                 else{
                     let firestoreDatabase = Firestore.firestore()
-                    let firestoreUser = ["userID" : Auth.auth().currentUser?.uid , "username" : self.kullaniciAdiTextField.text! , "email" : self.emailTextField.text! , "createDate" : FieldValue.serverTimestamp()] as [String : Any]
+                    let firestoreUser = ["userID" : Auth.auth().currentUser!.uid , "username" : self.kullaniciAdiTextField.text! , "email" : self.emailTextField.text! , "createDate" : FieldValue.serverTimestamp()] as [String : Any]
                     firestoreDatabase.collection("User").document(Auth.auth().currentUser!.uid).setData(firestoreUser) { (error) in
                         if error != nil{
                             self.hataMesaji(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata Aldınız, Tekrar Deneyiniz")

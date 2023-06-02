@@ -15,46 +15,47 @@ class FavorilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     @IBOutlet weak var favoriBitkilerinizLabel: UILabel!
     @IBOutlet weak var favoriBitkilerTableView: UITableView!
     
-    var favoriBitkilerDizisi = [FavoriBitki]()
+    var favoriBitkilerDizisi = [Bitki]()
     var guncelKullanici = Auth.auth().currentUser?.email
     var guncelKullaniciAdi = ""
+    var secilenBitkiBaslik = ""
+    var secilenBitkiAciklama = ""
+    var secilenBitkiImage = ""
+    var secilenbitkiKullanim = ""
+    var secilenBitkiDocumentID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        kullaniciAdiBulma()
         favoriBitkilerTableView.delegate = self
         favoriBitkilerTableView.dataSource = self
+        kullaniciAdiBulma()
         favoriBitkileriGetir()
     }
-    
     func favoriBitkileriGetir() {
         let firestoreDatabase = Firestore.firestore()
-        if let güncelKullanici = Auth.auth().currentUser?.email {
-            let favoritesRef = firestoreDatabase.collection("FavoriBitkiler")
-            let query = favoritesRef.whereField("kullanici", isEqualTo: güncelKullanici)
-            
-            query.getDocuments { (snapshot, error) in
-                if let error = error {
-                    print("Favori bitkileri alınırken hata oluştu: \(error.localizedDescription)")
-                    return
-                }
-                guard let documents = snapshot?.documents else {
-                    print("Favori bitki belgeleri bulunamadı.")
-                    return
-                }
-                for document in documents {
-                    if let bitkiDocumentID = document.get("bitkiDocumentID") as? String,
-                       let bitkiAdi = document.get("bitkiAdi") as? String,
-                       let bitkiGorselURL = document.get("bitkiGorselURL") as? String {
-                            let favoriBitki = FavoriBitki(bitkiDocumentID: bitkiDocumentID, bitkiAdi: bitkiAdi, bitkiGorselURL: bitkiGorselURL)
-                            self.favoriBitkilerDizisi.append(favoriBitki)
+        firestoreDatabase.collection("FavoriBitkiler").order(by: "tarih", descending: true).whereField("kullanici", isEqualTo: guncelKullanici as Any).addSnapshotListener{ (snapshot, error) in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+            }else{
+                if snapshot?.isEmpty != true && snapshot != nil{
+                    self.favoriBitkilerDizisi.removeAll(keepingCapacity: false)
+                    for document in snapshot!.documents {
+                        if let gorselUrl = document.get("gorselUrl") as? String{
+                            if let bitkiAdi = document.get("bitkiAdi") as? String{
+                                if let bitkiAciklama = document.get("bitkiAciklama") as? String{
+                                    if let bitkiKullanim = document.get("bitkiKullanim") as? String{
+                                        if let bitkiDocumentID = document.get("bitkiDocumentID") as? String{
+                                            let bitki = Bitki(bitkiAdi: bitkiAdi, gorselUrl: gorselUrl, bitkiAciklama: bitkiAciklama, bitkiKullanim: bitkiKullanim, bitkiDocumentID: bitkiDocumentID)
+                                            self.favoriBitkilerDizisi.append(bitki)
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
+                    self.favoriBitkilerTableView.reloadData()
+                    self.favoriBitkilerinizLabel.text = "Favori \(self.favoriBitkilerDizisi.count) bitkiniz"
                 }
-                
-                // Favori bitkileri alındıktan sonra tablo görünümünü güncelle
-                self.favoriBitkilerTableView.reloadData()
-                self.favoriBitkilerinizLabel.text = "Favori \(self.favoriBitkilerDizisi.count) bitkiniz"
             }
         }
     }
@@ -64,22 +65,42 @@ class FavorilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriBitkiCell", for: indexPath) as! FavoriBitkilerCell
-        let favoriBitki = favoriBitkilerDizisi[indexPath.row].bitkiGorselURL
+        let favoriBitki = favoriBitkilerDizisi[indexPath.row].gorselUrl
         cell.bitkiAdiLabel.text = favoriBitkilerDizisi[indexPath.row].bitkiAdi
-        cell.imageView?.sd_setImage(with: URL(string: favoriBitki), completed: nil)
+        cell.bitkiImageView.sd_setImage(with: URL(string: favoriBitki), completed: nil)
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        secilenBitkiBaslik = favoriBitkilerDizisi[indexPath.row].bitkiAdi
+        secilenBitkiAciklama = favoriBitkilerDizisi[indexPath.row].bitkiAciklama
+        secilenBitkiImage = favoriBitkilerDizisi[indexPath.row].gorselUrl
+        secilenbitkiKullanim = favoriBitkilerDizisi[indexPath.row].bitkiKullanim
+        secilenBitkiDocumentID = favoriBitkilerDizisi[indexPath.row].bitkiDocumentID
+        performSegue(withIdentifier: "fromFavoriToBitkiDetayVC", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromFavoriToBitkiDetayVC"{
+            let destinationVC = segue.destination as! BitkilerDetayVC
+            destinationVC.secilenBitkiBaslik = secilenBitkiBaslik
+            destinationVC.secilenBitkiAciklamasi = secilenBitkiAciklama
+            destinationVC.secilenBitkiImage = secilenBitkiImage
+            destinationVC.secilenBitkiKullanimi = secilenbitkiKullanim
+            destinationVC.secilenBitkiDocumentID = secilenBitkiDocumentID
+        }
     }
     
     func kullaniciAdiBulma(){
         let db = Firestore.firestore()
         db.collection("User").whereField("email", isEqualTo: guncelKullanici as Any).addSnapshotListener { (snapshot, Error) in
-            if let Error = Error {
-                self.mesajGoster(title: "Hata", message: Error.localizedDescription)
-            }else{
-                if snapshot?.isEmpty != true && snapshot != nil{
-                    for documnet in snapshot!.documents{
-                        self.guncelKullaniciAdi = documnet.get("username") as Any as! String
-                        self.kullaniciAdiLabel.text = self.guncelKullaniciAdi
+            if snapshot?.isEmpty != true && snapshot != nil{
+                if let Error = Error {
+                    self.mesajGoster(title: "Hata", message: Error.localizedDescription)
+                }else{
+                    if snapshot?.isEmpty != true && snapshot != nil{
+                        for documnet in snapshot!.documents{
+                            self.guncelKullaniciAdi = documnet.get("username") as Any as! String
+                            self.kullaniciAdiLabel.text = self.guncelKullaniciAdi
+                        }
                     }
                 }
             }

@@ -12,18 +12,19 @@ import SDWebImage
 
 class BitkilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    var secilenBitkiBaslik = ""
-    var secilenBitkiAciklama = ""
-    var secilenBitkiImage = ""
-    var secilenbitkiKullanim = ""
-    var secilenBitkiDocumentID = ""
-    
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var bitkiEklemeButton: UIButton!
     
     var bitkilerDizisi = [Bitki]()
     var guncelKullanici : String = (Auth.auth().currentUser?.email)!
+    var secilenBitkiBaslik = ""
+    var secilenBitkiAciklama = ""
+    var secilenBitkiImage = ""
+    var secilenbitkiKullanim = ""
+    var secilenBitkiDocumentID = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

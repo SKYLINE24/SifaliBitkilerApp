@@ -15,10 +15,3 @@ struct Bitki{
     var bitkiDocumentID: String
 }
 
-struct FavoriBitki{
-    var bitkiDocumentID: String
-    var bitkiAdi: String
-    var bitkiGorselURL: String
-}
-
-

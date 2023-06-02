@@ -29,21 +29,20 @@ class BitkilerDetayVC: UIViewController{
     var guncelKullanici = Auth.auth().currentUser?.email
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         if admin == guncelKullanici{
             duzenleButton.isHidden = true
         }else{
             duzenleButton.isHidden = false
         }
-        bitkiBaslikLabel.text = secilenBitkiBaslik
+        bitkiBaslikLabel.text = self.secilenBitkiBaslik
         bitkiAciklamaLabel.text = secilenBitkiAciklamasi
         if let imageUrl = URL(string: secilenBitkiImage) {
             bitkiImageView.sd_setImage(with: imageUrl, completed: nil)
         }
         bitkiTarifLabel.text = secilenBitkiKullanimi
-        super.viewDidLoad()
         favoriDurumuKontrol()
     }
-    
     
     @IBAction func favoriEkleTiklandi(_ sender: Any) {
         if favoriEklemeButton.title(for: .normal) == "Favorilere Ekle"{
@@ -52,16 +51,31 @@ class BitkilerDetayVC: UIViewController{
             favoridenKaldir()
         }
     }
-    
-   func favoriEkle (){
+    func secilenBitkiBulma(){
+        let fd = Firestore.firestore()
+        fd.collection("Bitkiler").document(secilenBitkiDocumentID).getDocument{ document, error in
+            if error != nil{
+                print(error?.localizedDescription as Any)
+            }else{
+                if let document = document{
+                    self.bitkiBaslikLabel.text = document.get("baslik") as? String;
+                    self.bitkiTarifLabel.text = document.get("bitkiAciklama") as? String;
+                    self.bitkiTarifLabel.text = document.get("bitkiKullanim") as? String;
+                }
+            }
+        }
+        self.bitkiImageView.sd_setImage(with: URL(string: self.secilenBitkiImage))
+    }
+    func favoriEkle (){
         let firestoreDatabase = Firestore.firestore()
         if let güncelKullanici = Auth.auth().currentUser?.email!{
-            let favoriBitki = ["bitkiDocumentID" : secilenBitkiDocumentID, "kullanici" : güncelKullanici, "bitkiAdi" : secilenBitkiBaslik, "bitkiGorselURL" : secilenBitkiImage ,"tarih" : FieldValue.serverTimestamp()] as [String : Any]
+            let favoriBitki = ["bitkiDocumentID" : secilenBitkiDocumentID, "kullanici" : güncelKullanici, "bitkiAdi" : secilenBitkiBaslik,"bitkiKullanim": secilenBitkiKullanimi,"bitkiAciklama": secilenBitkiAciklamasi ,"gorselUrl" : secilenBitkiImage ,"tarih" : FieldValue.serverTimestamp()] as [String : Any]
                 firestoreDatabase.collection("FavoriBitkiler").addDocument(data: favoriBitki) { (error) in
                  if error != nil{
                      self.mesajGoster(title: "Hata", message: error?.localizedDescription ?? "Hata Aldınız, Tekrar Deneyiniz")
                  }else{
-                     self.tabBarController?.selectedIndex = 2
+                     print("Favori belge başarıyla eklendi.")
+                     self.favoriEklemeButton.setTitle("Favorilerden Kaldır", for: .normal)
                  }
              }
         }
@@ -88,6 +102,7 @@ class BitkilerDetayVC: UIViewController{
                             print("Favori belge silinirken hata oluştu: \(error.localizedDescription)")
                         } else {
                             print("Favori belge başarıyla silindi.")
+                            self.favoriEklemeButton.setTitle("Favorilere Ekle", for: .normal)
                         }
                     }
                 }
@@ -122,12 +137,9 @@ class BitkilerDetayVC: UIViewController{
             }
         }
     }
-
-    
     @IBAction func bitkiDüzenleTiklandi(_ sender: Any) {
         
     }
-    
     func mesajGoster(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
@@ -135,5 +147,4 @@ class BitkilerDetayVC: UIViewController{
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
     }
-
 }
