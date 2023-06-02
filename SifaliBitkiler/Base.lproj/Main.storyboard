@@ -613,56 +613,66 @@
                                 <rect key="frame" x="15" y="60" width="363" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitkinin ismi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BK-VE-9Pf">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="205" height="45"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="Ydy-Ue-eks"/>
+                                            <constraint firstAttribute="height" constant="45" id="kmH-52-hTA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dae-IK-FZD">
-                                        <rect key="frame" x="255" y="0.0" width="108" height="45"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG6-tp-TCT">
+                                        <rect key="frame" x="213" y="0.0" width="150" height="45"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="108" id="Ntt-Qt-4it"/>
-                                            <constraint firstAttribute="height" constant="45" id="T1L-o6-uRM"/>
+                                            <constraint firstAttribute="width" constant="150" id="LGE-Ij-dxx"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Düzenle"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Favorilere ekle">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
                                         <connections>
-                                            <action selector="bitkiDüzenleTiklandi:" destination="O63-Hd-a20" eventType="touchUpInside" id="dpY-Nb-Bc0"/>
-                                            <segue destination="hcT-5C-6n8" kind="show" identifier="bitkiDüzenleme" id="g87-eF-i0E"/>
+                                            <action selector="favoriEkleTiklandi:" destination="O63-Hd-a20" eventType="touchUpInside" id="6yn-6e-8sg"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="bG6-tp-TCT" firstAttribute="top" secondItem="pPw-Nk-8Tr" secondAttribute="top" id="2gB-hT-syl"/>
+                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="top" secondItem="pPw-Nk-8Tr" secondAttribute="top" id="65f-xN-p3z"/>
+                                    <constraint firstAttribute="bottom" secondItem="bG6-tp-TCT" secondAttribute="bottom" id="6TT-1u-ABH"/>
                                     <constraint firstAttribute="height" constant="45" id="6t4-ZM-U5K"/>
-                                    <constraint firstItem="dae-IK-FZD" firstAttribute="leading" secondItem="4BK-VE-9Pf" secondAttribute="trailing" id="BmZ-UP-1hF"/>
-                                    <constraint firstAttribute="trailing" secondItem="dae-IK-FZD" secondAttribute="trailing" id="CgX-hQ-XTh"/>
-                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="top" secondItem="pPw-Nk-8Tr" secondAttribute="top" id="DGy-wp-5qf"/>
-                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="leading" secondItem="pPw-Nk-8Tr" secondAttribute="leading" id="JqP-a6-BOV"/>
-                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="top" secondItem="pPw-Nk-8Tr" secondAttribute="top" id="OZr-qq-u14"/>
-                                    <constraint firstAttribute="bottom" secondItem="dae-IK-FZD" secondAttribute="bottom" id="XL4-lU-KOA"/>
-                                    <constraint firstItem="dae-IK-FZD" firstAttribute="top" secondItem="pPw-Nk-8Tr" secondAttribute="top" id="kxY-r5-2gL"/>
-                                    <constraint firstAttribute="bottom" secondItem="4BK-VE-9Pf" secondAttribute="bottom" id="lOp-WM-y3z"/>
-                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="leading" secondItem="pPw-Nk-8Tr" secondAttribute="leading" id="lcT-HK-UqW"/>
-                                    <constraint firstAttribute="bottom" secondItem="4BK-VE-9Pf" secondAttribute="bottom" id="tpo-4a-abu"/>
+                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="leading" secondItem="pPw-Nk-8Tr" secondAttribute="leading" id="UbM-cB-Qpj"/>
+                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="top" secondItem="bG6-tp-TCT" secondAttribute="top" id="aYz-Nx-J6f"/>
+                                    <constraint firstAttribute="bottom" secondItem="4BK-VE-9Pf" secondAttribute="bottom" id="cRF-AG-Ox8"/>
+                                    <constraint firstItem="bG6-tp-TCT" firstAttribute="leading" secondItem="4BK-VE-9Pf" secondAttribute="trailing" constant="8" id="f6y-6m-Yx6"/>
+                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="leading" secondItem="pPw-Nk-8Tr" secondAttribute="leading" id="pcY-nP-3dZ"/>
+                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="centerY" secondItem="pPw-Nk-8Tr" secondAttribute="centerY" id="qbP-Oe-94h"/>
+                                    <constraint firstAttribute="trailing" secondItem="bG6-tp-TCT" secondAttribute="trailing" id="tuZ-AY-n3o"/>
+                                    <constraint firstItem="4BK-VE-9Pf" firstAttribute="top" secondItem="pPw-Nk-8Tr" secondAttribute="top" id="vxY-2c-JQg"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG6-tp-TCT">
-                                <rect key="frame" x="259" y="5" width="134" height="47"/>
-                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eR-O6-yVB">
+                                <rect key="frame" x="260" y="728" width="118" height="53"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="co6-4z-4el"/>
-                                    <constraint firstAttribute="width" constant="134" id="tcP-tP-RA7"/>
+                                    <constraint firstAttribute="width" constant="118" id="tOl-Jz-vHi"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Favorilere ekle">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="plain" title="Sil"/>
                                 <connections>
-                                    <action selector="favoriEkleTiklandi:" destination="O63-Hd-a20" eventType="touchUpInside" id="6yn-6e-8sg"/>
+                                    <action selector="bitkiSilTiklandi:" destination="O63-Hd-a20" eventType="touchUpInside" id="Wad-wT-fdJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dae-IK-FZD">
+                                <rect key="frame" x="15" y="728" width="131" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="uwh-VX-sY4"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Düzenle"/>
+                                <connections>
+                                    <action selector="bitkiDüzenleTiklandi:" destination="O63-Hd-a20" eventType="touchUpInside" id="dpY-Nb-Bc0"/>
+                                    <segue destination="hcT-5C-6n8" kind="show" identifier="frombitkiDüzenlemeToBitkiEkleme" id="g87-eF-i0E"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -672,9 +682,12 @@
                             <constraint firstItem="oK9-uC-LfW" firstAttribute="top" secondItem="pPw-Nk-8Tr" secondAttribute="bottom" constant="15" id="1I1-6E-eTZ"/>
                             <constraint firstItem="pPw-Nk-8Tr" firstAttribute="top" secondItem="WEV-Wf-YYQ" secondAttribute="top" constant="60" id="ErT-Z1-WPf"/>
                             <constraint firstItem="pPw-Nk-8Tr" firstAttribute="leading" secondItem="WEV-Wf-YYQ" secondAttribute="leading" constant="15" id="LSb-kl-PWV"/>
+                            <constraint firstItem="dae-IK-FZD" firstAttribute="top" secondItem="oK9-uC-LfW" secondAttribute="bottom" constant="8" id="MZr-w7-5YR"/>
+                            <constraint firstItem="dae-IK-FZD" firstAttribute="leading" secondItem="oK9-uC-LfW" secondAttribute="leading" id="T1T-DR-sbo"/>
+                            <constraint firstItem="WEV-Wf-YYQ" firstAttribute="bottom" secondItem="dae-IK-FZD" secondAttribute="bottom" constant="61" id="Umg-g3-RZa"/>
                             <constraint firstItem="WEV-Wf-YYQ" firstAttribute="trailing" secondItem="pPw-Nk-8Tr" secondAttribute="trailing" constant="15" id="Ywm-mv-54R"/>
-                            <constraint firstItem="bG6-tp-TCT" firstAttribute="top" secondItem="WEV-Wf-YYQ" secondAttribute="top" constant="5" id="cX1-kW-gKh"/>
-                            <constraint firstItem="bG6-tp-TCT" firstAttribute="trailing" secondItem="WEV-Wf-YYQ" secondAttribute="trailing" id="nGY-KH-X2y"/>
+                            <constraint firstItem="dae-IK-FZD" firstAttribute="baseline" secondItem="3eR-O6-yVB" secondAttribute="baseline" id="hBm-T1-KCi"/>
+                            <constraint firstItem="3eR-O6-yVB" firstAttribute="trailing" secondItem="oK9-uC-LfW" secondAttribute="trailing" id="htw-nq-Xev"/>
                             <constraint firstItem="WEV-Wf-YYQ" firstAttribute="trailing" secondItem="oK9-uC-LfW" secondAttribute="trailing" constant="15" id="wyy-Tj-jb9"/>
                             <constraint firstItem="oK9-uC-LfW" firstAttribute="leading" secondItem="WEV-Wf-YYQ" secondAttribute="leading" constant="15" id="xgV-iz-I1p"/>
                         </constraints>
@@ -716,8 +729,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qVX-KB-ml4"/>
-        <segue reference="ocg-oY-B40"/>
+        <segue reference="Nm6-fF-MFE"/>
+        <segue reference="g87-eF-i0E"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="figure.wave" catalog="system" width="80" height="128"/>

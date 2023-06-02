@@ -31,9 +31,9 @@ class BitkilerDetayVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         if admin == guncelKullanici{
-            duzenleButton.isHidden = true
-        }else{
             duzenleButton.isHidden = false
+        }else{
+            duzenleButton.isHidden = true
         }
         bitkiBaslikLabel.text = self.secilenBitkiBaslik
         bitkiAciklamaLabel.text = secilenBitkiAciklamasi
@@ -137,8 +137,50 @@ class BitkilerDetayVC: UIViewController{
             }
         }
     }
+    @IBAction func bitkiSilTiklandi(_ sender: Any) {
+        bitkiCollectionDelete()
+        favoriBitkiCollectionDelete()
+    }
+    func bitkiCollectionDelete(){
+        let db = Firestore.firestore()
+        db.collection("Bitkiler").document(secilenBitkiDocumentID).delete(){error in
+            if let error = error{
+                self.mesajGoster(title: "Hata", message: "Bitkiler collectionunda hata oluştu")
+            }else{
+                print("Bitkilerden döküman başarı ile silindi")
+            }
+        }
+    }
+    func favoriBitkiCollectionDelete(){
+        let db = Firestore.firestore()
+        db.collection("FavoriBitkiler").whereField("bitkiDocumentID", isEqualTo: secilenBitkiDocumentID).getDocuments { snapshot, error in
+            if let error = error{
+                self.mesajGoster(title: "Hata", message: error.localizedDescription)
+            }else{
+                for document in snapshot!.documents{
+                    document.reference.delete(){error in
+                        if let error = error{
+                            self.mesajGoster(title: "Hata", message: error.localizedDescription)
+                        }else{
+                            print("FavoriBitkiler dökümanından başarı ile silindi")
+                        }
+                    }
+                }
+            }
+        }
+    }
     @IBAction func bitkiDüzenleTiklandi(_ sender: Any) {
-        
+        performSegue(withIdentifier: "frombitkiDüzenlemeToBitkiEkleme", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "frombitkiDüzenlemeToBitkiEkleme"{
+            let destinationVC = segue.destination as! BitkiEklemeVC
+            destinationVC.bitkiBaslikTextField.text = secilenBitkiBaslik
+            destinationVC.bitkiAciklamaTextField.text = secilenBitkiAciklamasi
+            destinationVC.bitkiImageView = secilenBitkiImage
+            destinationVC.bitkiTarifTextField.text = secilenBitkiKullanimi
+            destinationVC.secilenBitkiDocumentID = secilenBitkiDocumentID
+        }
     }
     func mesajGoster(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)

@@ -26,10 +26,12 @@ class FavorilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        kullaniciAdiBulma()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        favoriBitkileriGetir()
         favoriBitkilerTableView.delegate = self
         favoriBitkilerTableView.dataSource = self
-        kullaniciAdiBulma()
-        favoriBitkileriGetir()
     }
     func favoriBitkileriGetir() {
         let firestoreDatabase = Firestore.firestore()

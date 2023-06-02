@@ -28,16 +28,18 @@ class BitkilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        verileriAl()
+        
         if guncelKullanici == "cankls@gmail.com"{
             bitkiEklemeButton.isHidden = false
         }else{
             bitkiEklemeButton.isHidden = true
         }
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.dataSource = self
+        tableView.delegate = self
+        verileriAl()
+    }
     func verileriAl(){
         let firebaseDatabase = Firestore.firestore()
         firebaseDatabase.collection("Bitki").order(by: "tarih", descending: true).addSnapshotListener { (snapshot, error) in

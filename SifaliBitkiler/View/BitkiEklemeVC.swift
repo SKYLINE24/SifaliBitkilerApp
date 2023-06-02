@@ -12,13 +12,11 @@ import FirebaseAuth
 
 class BitkiEklemeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
-    
     @IBOutlet weak var bitkiBaslikTextField: UITextField!
     @IBOutlet weak var bitkiAciklamaTextField: UITextField!
     @IBOutlet weak var bitkiTarifTextField: UITextField!
     @IBOutlet weak var bitkiImageView: UIImageView!
-    
-    
+    var secilenBitkiDocumentID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +24,6 @@ class BitkiEklemeVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         bitkiImageView.isUserInteractionEnabled = true         // kullanıcı resme tıkladığında işlem yapabilir hale getiriyoruz
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gorselSec))       //jest algılayıcı(tıklama algılayıcı)
         bitkiImageView.addGestureRecognizer(gestureRecognizer)
-        // Do any additional setup after loading the view.
     }
     @objc func gorselSec(){
         let pickerController = UIImagePickerController()
@@ -41,33 +38,36 @@ class BitkiEklemeVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
 
     @IBAction func bitkiEkleTiklandi(_ sender: Any) {
-        let storage = Storage.storage()
-        let storageReferance = storage.reference()
-        let mediaFolder = storageReferance.child("Bitkiler")
-        if let data = bitkiImageView.image?.jpegData(compressionQuality: 0.5){
-            let uuid = UUID().uuidString//ekleyeceğimiz fotoğraflara id vererek her fotoğraf yüklemede bir dosya oluşturmak yerine farklı farklı dosyalar oluştururarak eklenilen bütün fotoğrafları tutabiliyor childdan sonra yazarak tamamlıyoruz
-            let imageReferance = mediaFolder.child("\(uuid).jpg")
-            imageReferance.putData(data, metadata: nil) { (storagemetadata, error) in
-                //.pudData seçeneğinde metadata ve completion seçeneğini seçiyoruz değerleri (data , nil) 3. seçenekte enter ı tıklıyoruz
-                if error != nil{
-                    self.mesajGoster(title: "Hata", message: error?.localizedDescription ?? "Hata Aldınız, Tekrar Deneyin")
-                }else{
-                    imageReferance.downloadURL { (url, error) in
-                        if error == nil{
-                            let imageUrl = url?.absoluteString//url nin stringe çevrilmiş hali
-                          
-                            if let imageUrl = imageUrl{
-                                let firestoreDatabase = Firestore.firestore()
-                                let firestorePost = ["gorselUrl" : imageUrl, "bitkiAciklama" : self.bitkiAciklamaTextField.text!, "tarih" : FieldValue.serverTimestamp(), "bitkiKullanim" : self.bitkiTarifTextField.text!, "baslik" : self.bitkiBaslikTextField.text!] as [String : Any]
-                                firestoreDatabase.collection("Bitki").addDocument(data: firestorePost) { (error) in
-                                    if error != nil{
-                                        self.mesajGoster(title: "Hata", message: error?.localizedDescription ?? "Hata Aldınız, Tekrar Deneyiniz")
-                                    }else{
-                                        self.bitkiImageView.image = UIImage(named: "gorselSec")
-                                        self.bitkiBaslikTextField.text = ""
-                                        self.bitkiAciklamaTextField.text = ""
-                                        self.bitkiTarifTextField.text = ""
-                                        self.tabBarController?.selectedIndex = 0
+        if self.bitkiBaslikTextField.text == "" || self.bitkiAciklamaTextField.text == "" || self.bitkiTarifTextField.text == ""{
+            mesajGoster(title: "Hata", message: "Boş alanları doldurunuz")
+        }else{
+            let storage = Storage.storage()
+            let storageReferance = storage.reference()
+            let mediaFolder = storageReferance.child("Bitkiler")
+            if let data = bitkiImageView.image?.jpegData(compressionQuality: 0.5){
+                let uuid = UUID().uuidString//ekleyeceğimiz fotoğraflara id vererek her fotoğraf yüklemede bir dosya oluşturmak yerine farklı farklı dosyalar oluştururarak eklenilen bütün fotoğrafları tutabiliyor childdan sonra yazarak tamamlıyoruz
+                let imageReferance = mediaFolder.child("\(uuid).jpg")
+                imageReferance.putData(data, metadata: nil) { (storagemetadata, error) in
+                    //.pudData seçeneğinde metadata ve completion seçeneğini seçiyoruz değerleri (data , nil) 3. seçenekte enter ı tıklıyoruz
+                    if error != nil{
+                        self.mesajGoster(title: "Hata", message: error?.localizedDescription ?? "Hata Aldınız, Tekrar Deneyin")
+                    }else{
+                        imageReferance.downloadURL { (url, error) in
+                            if error == nil{
+                                let imageUrl = url?.absoluteString//url nin stringe çevrilmiş hali
+                              
+                                if let imageUrl = imageUrl{
+                                    let firestoreDatabase = Firestore.firestore()
+                                    let firestorePost = ["gorselUrl" : imageUrl, "bitkiAciklama" : self.bitkiAciklamaTextField.text!, "tarih" : FieldValue.serverTimestamp(), "bitkiKullanim" : self.bitkiTarifTextField.text!, "baslik" : self.bitkiBaslikTextField.text!] as [String : Any]
+                                    firestoreDatabase.collection("Bitki").addDocument(data: firestorePost) { (error) in
+                                        if error != nil{
+                                            self.mesajGoster(title: "Hata", message: error?.localizedDescription ?? "Hata Aldınız, Tekrar Deneyiniz")
+                                        }else{
+                                            self.bitkiImageView.image = UIImage(named: "gorselSec")
+                                            self.bitkiBaslikTextField.text = ""
+                                            self.bitkiAciklamaTextField.text = ""
+                                            self.bitkiTarifTextField.text = ""
+                                        }
                                     }
                                 }
                             }
@@ -76,6 +76,7 @@ class BitkiEklemeVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 }
             }
         }
+        mesajGoster(title: "Kaydedildi", message: "İşleminiz Tamamlandı!")
     }
     func mesajGoster(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
