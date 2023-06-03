@@ -10,7 +10,7 @@ import SDWebImage
 import Firebase
 
 
-class BitkilerDetayVC: UIViewController{
+final class BitkilerDetayVC: UIViewController{
 
     @IBOutlet weak var bitkiBaslikLabel: UILabel!
     @IBOutlet weak var bitkiAciklamaLabel: UILabel!
@@ -24,9 +24,8 @@ class BitkilerDetayVC: UIViewController{
     var secilenBitkiImage = ""
     var secilenBitkiKullanimi = ""
     var secilenBitkiDocumentID = ""
-    
-    let admin = "cankls@gmail.com"
     var guncelKullanici = Auth.auth().currentUser?.email
+    let admin = "cankls@gmail.com"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,9 +83,7 @@ class BitkilerDetayVC: UIViewController{
         let firestoreDatabase = Firestore.firestore()
         if let güncelKullanici = Auth.auth().currentUser?.email {
             let favoritesRef = firestoreDatabase.collection("FavoriBitkiler")
-            let query = favoritesRef.whereField("kullanici", isEqualTo: güncelKullanici)
-                                   .whereField("bitkiDocumentID", isEqualTo: secilenBitkiDocumentID)
-            
+            let query = favoritesRef.whereField("kullanici", isEqualTo: güncelKullanici).whereField("bitkiDocumentID", isEqualTo: secilenBitkiDocumentID)
             query.getDocuments { (snapshot, error) in
                 if let error = error {
                     self.mesajGoster(title: "Hata", message: error.localizedDescription )
@@ -95,7 +92,6 @@ class BitkilerDetayVC: UIViewController{
                     print("Favori belgeleri bulunamadı.")
                     return
                 }
-                
                 for document in documents {
                     favoritesRef.document(document.documentID).delete { (error) in
                         if let error = error {
@@ -113,24 +109,20 @@ class BitkilerDetayVC: UIViewController{
         let firestoreDatabase = Firestore.firestore()
         if let güncelKullanici = Auth.auth().currentUser?.email {
             let favoritesRef = firestoreDatabase.collection("FavoriBitkiler")
-            let query = favoritesRef.whereField("kullanici", isEqualTo: güncelKullanici)
-                                   .whereField("bitkiDocumentID", isEqualTo: secilenBitkiDocumentID)
-            
+            let query = favoritesRef.whereField("kullanici", isEqualTo: güncelKullanici).whereField("bitkiDocumentID", isEqualTo: secilenBitkiDocumentID)
             query.getDocuments { (snapshot, error) in
                 if let error = error {
                     print("Favori belgeleri alınırken hata oluştu: \(error.localizedDescription)")
                     return
                 }
-                
                 guard let documents = snapshot?.documents else {
                     print("Favori belgeleri bulunamadı.")
                     return
                 }
-                
                 if documents.isEmpty {
                     // Kullanıcı bu bitkiyi favorilere eklememiş, butonu Favorilere Ekle olarak ayarla
                     self.favoriEklemeButton.setTitle("Favorilere Ekle", for: .normal)
-                } else {
+                }else{
                     // Kullanıcı bu bitkiyi favorilere eklemiş, butonu Favorilerden Kaldır olarak ayarla
                     self.favoriEklemeButton.setTitle("Favorilerden Kaldır", for: .normal)
                 }
@@ -141,30 +133,46 @@ class BitkilerDetayVC: UIViewController{
         bitkiCollectionDelete()
         favoriBitkiCollectionDelete()
     }
-    func bitkiCollectionDelete(){
+    func bitkiCollectionDelete() {
         let db = Firestore.firestore()
-        db.collection("Bitkiler").document(secilenBitkiDocumentID).delete(){error in
-            if let error = error{
-                self.mesajGoster(title: "Hata", message: "Bitkiler collectionunda hata oluştu")
-            }else{
-                print("Bitkilerden döküman başarı ile silindi")
+        db.collection("Bitki").whereField("baslik", isEqualTo: secilenBitkiBaslik).getDocuments{ snapshot, error in
+            if let error = error {
+                self.mesajGoster(title: "Hata", message: error.localizedDescription)
+            }else {
+                if let documents = snapshot?.documents {
+                    for document in documents {
+                        document.reference.delete { error in
+                            if let error = error {
+                                self.mesajGoster(title: "Hata", message: error.localizedDescription)
+                            } else {
+                                self.mesajGoster(title: "Onaylandı", message: "Silme işleminiz gerçekleşti!")
+                            }
+                        }
+                    }
+                }else {
+                    print("Bitki bulunamadı")
+                }
             }
         }
     }
-    func favoriBitkiCollectionDelete(){
+    func favoriBitkiCollectionDelete() {
         let db = Firestore.firestore()
         db.collection("FavoriBitkiler").whereField("bitkiDocumentID", isEqualTo: secilenBitkiDocumentID).getDocuments { snapshot, error in
-            if let error = error{
+            if let error = error {
                 self.mesajGoster(title: "Hata", message: error.localizedDescription)
-            }else{
-                for document in snapshot!.documents{
-                    document.reference.delete(){error in
-                        if let error = error{
-                            self.mesajGoster(title: "Hata", message: error.localizedDescription)
-                        }else{
-                            print("FavoriBitkiler dökümanından başarı ile silindi")
+            }else {
+                if let documents = snapshot?.documents {
+                    for document in documents {
+                        document.reference.delete { error in
+                            if let error = error {
+                                self.mesajGoster(title: "Hata", message: error.localizedDescription)
+                            } else {
+                                self.mesajGoster(title: "Onaylandı", message: "Silme işleminiz gerçekleşti!")
+                            }
                         }
                     }
+                }else {
+                    print("Bitki bulunamadı")
                 }
             }
         }
@@ -175,16 +183,15 @@ class BitkilerDetayVC: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "frombitkiDüzenlemeToBitkiEkleme"{
             let destinationVC = segue.destination as! BitkiEklemeVC
-            destinationVC.bitkiBaslikTextField.text = secilenBitkiBaslik
-            destinationVC.bitkiAciklamaTextField.text = secilenBitkiAciklamasi
-            destinationVC.bitkiImageView = secilenBitkiImage
-            destinationVC.bitkiTarifTextField.text = secilenBitkiKullanimi
+            destinationVC.secilenBitkiBaslik = secilenBitkiBaslik
+            destinationVC.secilenBitkiAciklamasi = secilenBitkiAciklamasi
+            destinationVC.secilenBitkiKullanimi = secilenBitkiKullanimi
             destinationVC.secilenBitkiDocumentID = secilenBitkiDocumentID
+            destinationVC.secilenBitkiImage = secilenBitkiImage
         }
     }
     func mesajGoster(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        
         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)

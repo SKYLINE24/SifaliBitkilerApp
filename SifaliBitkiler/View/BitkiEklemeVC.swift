@@ -16,14 +16,27 @@ class BitkiEklemeVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     @IBOutlet weak var bitkiAciklamaTextField: UITextField!
     @IBOutlet weak var bitkiTarifTextField: UITextField!
     @IBOutlet weak var bitkiImageView: UIImageView!
+    @IBOutlet weak var ekleButton: UIButton!
+    
+    var secilenBitkiBaslik = ""
+    var secilenBitkiAciklamasi = ""
+    var secilenBitkiImage = ""
+    var secilenBitkiKullanimi = ""
     var secilenBitkiDocumentID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         bitkiImageView.isUserInteractionEnabled = true         // kullanıcı resme tıkladığında işlem yapabilir hale getiriyoruz
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gorselSec))       //jest algılayıcı(tıklama algılayıcı)
         bitkiImageView.addGestureRecognizer(gestureRecognizer)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if secilenBitkiDocumentID.isEmpty{
+            self.ekleButton.setTitle("Ekle", for: .normal)
+        }else{
+            self.ekleButton.setTitle("Düzenle", for: .normal)
+        }
     }
     @objc func gorselSec(){
         let pickerController = UIImagePickerController()
@@ -38,6 +51,14 @@ class BitkiEklemeVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
 
     @IBAction func bitkiEkleTiklandi(_ sender: Any) {
+        if secilenBitkiDocumentID.isEmpty{
+            yeniBitkiEkle()
+        }else{
+            bitkiDüzenle()
+        }
+    }
+    
+    func yeniBitkiEkle(){
         if self.bitkiBaslikTextField.text == "" || self.bitkiAciklamaTextField.text == "" || self.bitkiTarifTextField.text == ""{
             mesajGoster(title: "Hata", message: "Boş alanları doldurunuz")
         }else{
@@ -78,9 +99,22 @@ class BitkiEklemeVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         }
         mesajGoster(title: "Kaydedildi", message: "İşleminiz Tamamlandı!")
     }
+    func bitkiDüzenle(){
+        bitkiBaslikTextField.text = self.secilenBitkiBaslik
+        bitkiAciklamaTextField.text = secilenBitkiAciklamasi
+        if let imageUrl = URL(string: secilenBitkiImage) {
+            bitkiImageView.sd_setImage(with: imageUrl, completed: nil)
+        }
+        bitkiTarifTextField.text = secilenBitkiKullanimi
+        if self.bitkiBaslikTextField.text == "" || self.bitkiAciklamaTextField.text == "" || self.bitkiTarifTextField.text == ""{
+            mesajGoster(title: "Hata", message: "Boş alanları doldurunuz")
+        }else{
+            let firestoreDatabase = Firestore.firestore()
+            firestoreDatabase.collection("Bitkiler").document(secilenBitkiDocumentID).updateData(["baslik" : bitkiBaslikTextField.text as Any, "bitkiAciklama" : bitkiAciklamaTextField.text as Any, "bitkiKullanim" : bitkiTarifTextField.text as Any, "gorselUrl" : bitkiImageView.sd_imageURL as Any] as [String : Any] )
+        }
+    }
     func mesajGoster(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        
         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)

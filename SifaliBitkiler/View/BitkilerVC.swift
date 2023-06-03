@@ -96,11 +96,7 @@ class BitkilerVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
             destinationVC.secilenBitkiDocumentID = secilenBitkiDocumentID
         }
     }
-    
     @IBAction func bitkiEklemeTiklandi(_ sender: Any) {
         performSegue(withIdentifier: "toBitkiEklemeVC", sender: nil)
     }
-    
-    
-
 }

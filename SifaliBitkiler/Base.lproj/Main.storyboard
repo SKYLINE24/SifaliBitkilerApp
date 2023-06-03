@@ -17,13 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Şifalı Bitkiler" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Dh-Ap-qBW">
-                                <rect key="frame" x="78" y="85" width="237" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KTj-9Q-WVF">
                                 <rect key="frame" x="16" y="253" width="361" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -69,9 +62,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sifalıBitkilerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Xdg-j9-Ks2">
+                                <rect key="frame" x="69" y="25" width="255" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="CRr-gG-Kwj"/>
+                                    <constraint firstAttribute="width" constant="255" id="Rns-zB-LHL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xdg-j9-Ks2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="6yr-gR-68e"/>
+                            <constraint firstItem="Xdg-j9-Ks2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZtC-EB-9et"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="KTj-9Q-WVF" id="4xR-ga-Kme"/>
@@ -443,11 +447,12 @@
                         <outlet property="bitkiBaslikTextField" destination="ong-kA-udU" id="R8H-AT-aaF"/>
                         <outlet property="bitkiImageView" destination="paf-EZ-Oz4" id="jYU-Gf-3gf"/>
                         <outlet property="bitkiTarifTextField" destination="dh6-jl-Wcf" id="N9o-50-qem"/>
+                        <outlet property="ekleButton" destination="r6e-ks-OTp" id="eN8-x6-fJ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6M-PD-gTp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1770" y="1516"/>
+            <point key="canvasLocation" x="-1819" y="1537"/>
         </scene>
         <!--Bitkiler-->
         <scene sceneID="cUE-qQ-Y4s">
@@ -652,42 +657,55 @@
                                     <constraint firstItem="4BK-VE-9Pf" firstAttribute="top" secondItem="pPw-Nk-8Tr" secondAttribute="top" id="vxY-2c-JQg"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eR-O6-yVB">
-                                <rect key="frame" x="260" y="728" width="118" height="53"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nl5-kG-4bi">
+                                <rect key="frame" x="0.0" y="761" width="393" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eR-O6-yVB">
+                                        <rect key="frame" x="267" y="0.0" width="118" height="53"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="118" id="gJ4-wi-IJc"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Sil"/>
+                                        <connections>
+                                            <action selector="bitkiSilTiklandi:" destination="O63-Hd-a20" eventType="touchUpInside" id="Wad-wT-fdJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dae-IK-FZD">
+                                        <rect key="frame" x="8" y="0.0" width="118" height="53"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="118" id="6CN-TY-zxN"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Düzenle"/>
+                                        <connections>
+                                            <action selector="bitkiDüzenleTiklandi:" destination="O63-Hd-a20" eventType="touchUpInside" id="dpY-Nb-Bc0"/>
+                                            <segue destination="hcT-5C-6n8" kind="show" identifier="frombitkiDüzenlemeToBitkiEkleme" id="g87-eF-i0E"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="118" id="tOl-Jz-vHi"/>
+                                    <constraint firstItem="dae-IK-FZD" firstAttribute="firstBaseline" secondItem="3eR-O6-yVB" secondAttribute="firstBaseline" id="6XR-Cx-ZZ3"/>
+                                    <constraint firstItem="3eR-O6-yVB" firstAttribute="trailing" secondItem="nl5-kG-4bi" secondAttribute="trailingMargin" id="DZV-UH-Le3"/>
+                                    <constraint firstItem="dae-IK-FZD" firstAttribute="baseline" secondItem="3eR-O6-yVB" secondAttribute="baseline" id="JVF-FX-EL2"/>
+                                    <constraint firstAttribute="height" constant="56" id="LQb-aa-YIx"/>
+                                    <constraint firstAttribute="bottom" secondItem="dae-IK-FZD" secondAttribute="bottom" constant="3" id="WnT-w8-Ftl"/>
+                                    <constraint firstItem="dae-IK-FZD" firstAttribute="top" secondItem="nl5-kG-4bi" secondAttribute="top" id="sTn-7b-g96"/>
+                                    <constraint firstItem="dae-IK-FZD" firstAttribute="leading" secondItem="nl5-kG-4bi" secondAttribute="leadingMargin" id="ttK-tX-7ip"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sil"/>
-                                <connections>
-                                    <action selector="bitkiSilTiklandi:" destination="O63-Hd-a20" eventType="touchUpInside" id="Wad-wT-fdJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dae-IK-FZD">
-                                <rect key="frame" x="15" y="728" width="131" height="53"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="131" id="uwh-VX-sY4"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Düzenle"/>
-                                <connections>
-                                    <action selector="bitkiDüzenleTiklandi:" destination="O63-Hd-a20" eventType="touchUpInside" id="dpY-Nb-Bc0"/>
-                                    <segue destination="hcT-5C-6n8" kind="show" identifier="frombitkiDüzenlemeToBitkiEkleme" id="g87-eF-i0E"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WEV-Wf-YYQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oK9-uC-LfW" firstAttribute="top" secondItem="pPw-Nk-8Tr" secondAttribute="bottom" constant="15" id="1I1-6E-eTZ"/>
+                            <constraint firstItem="nl5-kG-4bi" firstAttribute="leading" secondItem="WEV-Wf-YYQ" secondAttribute="leading" id="3pk-pi-UbS"/>
                             <constraint firstItem="pPw-Nk-8Tr" firstAttribute="top" secondItem="WEV-Wf-YYQ" secondAttribute="top" constant="60" id="ErT-Z1-WPf"/>
+                            <constraint firstItem="WEV-Wf-YYQ" firstAttribute="bottom" secondItem="nl5-kG-4bi" secondAttribute="bottom" constant="25" id="Hi9-bu-lMN"/>
                             <constraint firstItem="pPw-Nk-8Tr" firstAttribute="leading" secondItem="WEV-Wf-YYQ" secondAttribute="leading" constant="15" id="LSb-kl-PWV"/>
-                            <constraint firstItem="dae-IK-FZD" firstAttribute="top" secondItem="oK9-uC-LfW" secondAttribute="bottom" constant="8" id="MZr-w7-5YR"/>
-                            <constraint firstItem="dae-IK-FZD" firstAttribute="leading" secondItem="oK9-uC-LfW" secondAttribute="leading" id="T1T-DR-sbo"/>
-                            <constraint firstItem="WEV-Wf-YYQ" firstAttribute="bottom" secondItem="dae-IK-FZD" secondAttribute="bottom" constant="61" id="Umg-g3-RZa"/>
                             <constraint firstItem="WEV-Wf-YYQ" firstAttribute="trailing" secondItem="pPw-Nk-8Tr" secondAttribute="trailing" constant="15" id="Ywm-mv-54R"/>
-                            <constraint firstItem="dae-IK-FZD" firstAttribute="baseline" secondItem="3eR-O6-yVB" secondAttribute="baseline" id="hBm-T1-KCi"/>
-                            <constraint firstItem="3eR-O6-yVB" firstAttribute="trailing" secondItem="oK9-uC-LfW" secondAttribute="trailing" id="htw-nq-Xev"/>
+                            <constraint firstItem="nl5-kG-4bi" firstAttribute="trailing" secondItem="WEV-Wf-YYQ" secondAttribute="trailing" id="taI-SS-K2c"/>
                             <constraint firstItem="WEV-Wf-YYQ" firstAttribute="trailing" secondItem="oK9-uC-LfW" secondAttribute="trailing" constant="15" id="wyy-Tj-jb9"/>
                             <constraint firstItem="oK9-uC-LfW" firstAttribute="leading" secondItem="WEV-Wf-YYQ" secondAttribute="leading" constant="15" id="xgV-iz-I1p"/>
                         </constraints>
@@ -704,7 +722,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K4j-ld-yIh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1069.4656488549617" y="1515.4929577464789"/>
+            <point key="canvasLocation" x="-1031" y="1538"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="K5y-vl-B1P">
@@ -730,7 +748,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Nm6-fF-MFE"/>
-        <segue reference="g87-eF-i0E"/>
+        <segue reference="ocg-oY-B40"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="figure.wave" catalog="system" width="80" height="128"/>
